@@ -1,8 +1,9 @@
+# frozen_string_literal: false
 require File.dirname(__FILE__) + '/../test_helper'
 require 'pathname'
 require 'tmpdir'
 
-class UtilTest < MiniTest::Test
+class UtilTest < Minitest::Test
   include Sass::Util
 
   def test_scope

@@ -12,7 +12,7 @@ class CallbacksHandler < YARD::Handlers::Ruby::Legacy::Base
       attrs = []
     end
 
-    yieldparams = ""
+    yieldparams = +""
     attrs.reject! do |a|
       next unless a =~ /^@yield *(\[.*?\])/
       yieldparams = $1

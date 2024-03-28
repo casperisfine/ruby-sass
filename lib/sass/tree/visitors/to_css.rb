@@ -131,7 +131,7 @@ class Sass::Tree::Visitors::ToCss < Sass::Tree::Visitors::Base
     if node.style == :compressed && trailing_semicolon?
       erase! 1
     end
-    return "" if @result.empty?
+    return +"" if @result.empty?
 
     output "\n"
 
@@ -414,7 +414,7 @@ class Sass::Tree::Visitors::ToCss < Sass::Tree::Visitors::Base
   def debug_info_rule(debug_info, options)
     node = Sass::Tree::DirectiveNode.resolved("@media -sass-debug-info")
     debug_info.map {|k, v| [k.to_s, v.to_s]}.to_a.each do |k, v|
-      rule = Sass::Tree::RuleNode.new([""])
+      rule = Sass::Tree::RuleNode.new([+""])
       rule.resolved_rules = Sass::Selector::CommaSequence.new(
         [Sass::Selector::Sequence.new(
           [Sass::Selector::SimpleSequence.new(
@@ -422,7 +422,7 @@ class Sass::Tree::Visitors::ToCss < Sass::Tree::Visitors::Base
             false)
           ])
         ])
-      prop = Sass::Tree::PropNode.new([""], [""], :new)
+      prop = Sass::Tree::PropNode.new([+""], [+""], :new)
       prop.resolved_name = "font-family"
       prop.resolved_value = Sass::SCSS::RX.escape_ident(v.to_s)
       rule << prop

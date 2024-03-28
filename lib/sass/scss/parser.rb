@@ -1134,7 +1134,7 @@ module Sass
         pos = @scanner.pos
         line = @line
         offset = @offset
-        @strs.push ""
+        @strs.push(+"")
         throw_error {yield} && @strs.last
       rescue Sass::SyntaxError
         @scanner.pos = pos

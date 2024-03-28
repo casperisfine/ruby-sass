@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+# frozen_string_literal: false
 require File.dirname(__FILE__) + '/../test_helper'
 require File.dirname(__FILE__) + '/test_helper'
 
-class SourcemapTest < MiniTest::Test
+class SourcemapTest < Minitest::Test
   def test_to_json_requires_args
     _, sourcemap = render_with_sourcemap('')
     assert_raises(ArgumentError) {sourcemap.to_json({})}
@@ -966,8 +967,8 @@ CSS
     options[:syntax] ||= :scss
     input_filename = filename_for_test(options[:syntax])
     mapping = build_mapping_from_annotations(source, css, input_filename)
-    source.gsub!(ANNOTATION_REGEX, "")
-    css.gsub!(ANNOTATION_REGEX, "")
+    source = source.gsub(ANNOTATION_REGEX, "")
+    css = css.gsub(ANNOTATION_REGEX, "")
     rendered, sourcemap = render_with_sourcemap(source, options)
     assert_equal css.rstrip, rendered.rstrip
     assert_sourcemaps_equal source, css, mapping, sourcemap

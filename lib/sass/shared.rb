@@ -37,7 +37,7 @@ module Sass
     #   and the rest of the string.
     #   `["Foo (Bar (Baz bang) bop)", " (Bang (bop bip))"]` in the example above.
     def balance(scanner, start, finish, count = 0)
-      str = ''
+      str = +''
       scanner = Sass::Util::MultibyteStringScanner.new(scanner) unless scanner.is_a? StringScanner
       regexp = Regexp.new("(.*?)[\\#{start.chr}\\#{finish.chr}]", Regexp::MULTILINE)
       while scanner.scan(regexp)
@@ -67,7 +67,7 @@ module Sass
       if was
         was = singular ? ' was' : ' were'
       else
-        was = ''
+        was = +''
       end
 
       "#{indentation.length} #{noun}#{'s' unless singular}#{was}"

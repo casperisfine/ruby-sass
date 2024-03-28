@@ -557,7 +557,7 @@ WARNING
   end
 
   def handle_import_loop!(node)
-    msg = "An @import loop has been found:"
+    msg = +"An @import loop has been found:"
     files = @environment.stack.frames.select {|f| f.is_import?}.map {|f| f.filename}.compact
     if node.filename == node.imported_file.options[:filename]
       raise Sass::SyntaxError.new("#{msg} #{node.filename} imports itself")

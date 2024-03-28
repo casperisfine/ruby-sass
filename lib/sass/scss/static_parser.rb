@@ -83,7 +83,7 @@ module Sass
         sel = selector
         return unless sel
         selectors = [sel]
-        ws = ''
+        ws = +''
         while tok(/,/)
           ws << str {ss}
           next unless (sel = selector)
@@ -91,7 +91,7 @@ module Sass
           if ws.include?("\n")
             selectors[-1] = Selector::Sequence.new(["\n"] + selectors.last.members)
           end
-          ws = ''
+          ws = +''
         end
         Selector::CommaSequence.new(selectors)
       end
@@ -137,7 +137,7 @@ MESSAGE
 
       def reference_combinator
         return unless tok(%r{/})
-        res = '/'
+        res = +'/'
         ns, name = expr!(:qualified_name)
         res << ns << '|' if ns
         res << name << tok!(%r{/})

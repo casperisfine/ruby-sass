@@ -1,10 +1,11 @@
+# frozen_string_literal: false
 lib_dir = File.dirname(__FILE__) + '/../lib'
 
 require 'minitest/autorun'
 require 'fileutils'
 $:.unshift lib_dir unless $:.include?(lib_dir)
 require 'sass'
-require 'mathn' if ENV['MATHN'] == 'true'
+# require 'mathn' if ENV['MATHN'] == 'true'
 
 Sass::RAILS_LOADED = true unless defined?(Sass::RAILS_LOADED)
 
@@ -22,7 +23,7 @@ module Sass::Script::Functions
   end
 end
 
-class MiniTest::Test
+class Minitest::Test
   def munge_filename(opts = {})
     opts[:filename] ||= filename_for_test(opts[:syntax] || :sass)
     opts[:sourcemap_filename] ||= sourcemap_filename_for_test

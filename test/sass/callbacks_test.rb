@@ -25,7 +25,7 @@ module ClassLevelCallerBack
   end
 end
 
-class SassCallbacksTest < MiniTest::Test
+class SassCallbacksTest < Minitest::Test
   def test_simple_callback
     cb = CallerBack.new
     there = false
@@ -36,7 +36,7 @@ class SassCallbacksTest < MiniTest::Test
 
   def test_multiple_callbacks
     cb = CallerBack.new
-    str = ""
+    str = +""
     cb.on_foo {str += "first"}
     cb.on_foo {str += " second"}
     cb.do_foo

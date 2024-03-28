@@ -147,7 +147,7 @@ module Sass::Media
     #
     # @return [String]
     def to_css
-      css = ''
+      css = +''
       css << resolved_modifier
       css << ' ' unless resolved_modifier.empty?
       css << resolved_type
@@ -166,7 +166,7 @@ module Sass::Media
     # @param options [{Symbol => Object}] An options hash (see {Sass::CSS#initialize}).
     # @return [String]
     def to_src(options)
-      src = ''
+      src = +''
       src << Sass::Media._interp_to_src(modifier, options)
       src << ' ' unless modifier.empty?
       src << Sass::Media._interp_to_src(type, options)

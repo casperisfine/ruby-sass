@@ -174,7 +174,7 @@ class Sass::Tree::Visitors::Convert < Sass::Tree::Visitors::Base
       if node.args.empty? && node.splat.nil?
         ""
       else
-        str = '('
+        str = +'('
         str << node.args.map do |v, d|
           if d
             "#{v.to_sass(@options)}: #{d.to_sass(@options)}"
